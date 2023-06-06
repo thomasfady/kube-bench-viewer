@@ -123,7 +123,7 @@
                                             <span x-show="result.status == 'PASS'" class="badge badge-pass">PASS</span>
                                         </th>
                                         <td ><a x-bind:href="'#'+result.test_number" x-text="result.test_number"></a></td>
-                                        <td x-text="result.test_desc"></td>
+                                        <td x-text="result.test_desc.replace(' (Manual)','').replace(' (Automated)','')"></td>
                                       </tr>
                                 </template>
                               
@@ -140,7 +140,7 @@
                     <div x-show="result.status != 'PASS'">
                         <article x-bind:id="result.test_number" x-bind:class="'article-'+result.status">
                             <h4 x-text="result.test_number +' '+test.desc"></h4>
-                            <p x-text="result.test_desc"></p>
+                            <p x-text="result.test_desc.replace(' (Manual)','').replace(' (Automated)','')"></p>
                             <h5>Fix</h5>
                             <code x-text="result.remediation"></code>
                             <div x-show="result.actual_value">
